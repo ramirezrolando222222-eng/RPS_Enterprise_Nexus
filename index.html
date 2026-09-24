@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rolando H. Ramirez Jr. LLC | Enterprise Solutions & Automation</title>
+    <title>Ramirez Products Systems | Enterprise Solutions & Automation</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0b0f19; color: #f3f4f6; margin: 0; padding: 20px; line-height: 1.6; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         .wrapper { display: flex; flex-direction: row; max-width: 1000px; width: 100%; gap: 30px; flex-wrap: wrap; }
@@ -15,9 +15,8 @@
         ul { padding-left: 18px; font-size: 0.95rem; }
         li { margin-bottom: 10px; }
         
-        /* Chat UI Styles */
         .chat-header { font-weight: bold; color: #10b981; margin-bottom: 15px; border-bottom: 1px solid #374151; padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .chat-messages { flex-grow: 1; height: 220px; overflow-y: auto; background: #030712; padding: 12px; border-radius: 8px; border: 1px solid #1f2937; margin-bottom: 15px; font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px; }
+        .chat-messages { flex-grow: 1; height: 200px; overflow-y: auto; background: #030712; padding: 12px; border-radius: 8px; border: 1px solid #1f2937; margin-bottom: 15px; font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px; }
         .message { padding: 8px 12px; border-radius: 6px; max-width: 85%; }
         .message.ana { background: #1f2937; color: #e5e7eb; align-self: flex-start; }
         .message.user { background: #10b981; color: #030712; align-self: flex-end; font-weight: 500; }
@@ -25,28 +24,27 @@
         input, textarea { background: #030712; border: 1px solid #374151; color: #f3f4f6; padding: 10px; border-radius: 6px; font-size: 0.9rem; width: 100%; box-sizing: border-box; }
         button { background: #10b981; color: #030712; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
         button:hover { background: #059669; }
+        .status-msg { text-align: center; font-size: 0.85rem; margin-top: 5px; color: #34d399; }
         .footer { margin-top: 25px; text-align: center; font-size: 0.8rem; color: #6b7280; border-top: 1px solid #1f2937; padding-top: 15px; }
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <!-- Company Info Section -->
         <div class="container">
-            <h1>Rolando H. Ramirez Jr. LLC</h1>
-            <div class="tagline">Houston, Texas • Sovereign Infrastructure & Automation</div>
+            <h1>Ramirez Products Systems</h1>
+            <div class="tagline">Rolando H. Ramirez Jr. LLC • Houston, Texas</div>
             
-            <h2>Our Core Capabilities</h2>
+            <h2>Core Capabilities</h2>
             <ul>
                 <li><strong>Workflow Automation:</strong> Eliminating manual bottlenecks with custom automation scripts.</li>
-                <li><strong>Digital Security Audits:</strong> Hardening local systems against data exposure and leaks.</li>
+                <li><strong>Digital Security Audits:</strong> Hardening local systems against data exposure.</li>
                 <li><strong>Rapid Tech Contracting:</strong> Secure backend scripting and custom API integrations.</li>
             </ul>
 
-            <h2>Our Commitment</h2>
+            <h2>Commitment</h2>
             <p style="font-size: 0.9rem; font-style: italic; color: #9ca3af;">"Commit to the Lord whatever you do, and He will establish your plans." — Proverbs 16:3</p>
         </div>
 
-        <!-- Ana Customer Relations Chatbot Box -->
         <div class="chat-box">
             <div class="chat-header">
                 <span>🤖 Ana | AI Customer Relations</span>
@@ -54,46 +52,59 @@
             </div>
             
             <div class="chat-messages" id="chatMessages">
-                <div class="message ana">Hello! I'm Ana, Chief of Staff for Rolando H. Ramirez Jr. LLC. What project or automation can we build for you today? (Type your message below)</div>
+                <div class="message ana">Hello! I'm Ana, Chief of Staff for Ramirez Products Systems. What project or automation can we build for you today?</div>
             </div>
 
-            <!-- Form connected to secure email dispatch -->
-            <form id="chatForm" class="chat-input-area" action="https://api.web3forms.com/submit" method="POST">
-                <!-- Replace with your submission token or keep default secure routing -->
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-                <input type="hidden" name="subject" value="[ANA LEAD] New Inquiry from Sovereign Website">
-                
-                <input type="text" id="userName" name="name" placeholder="Your Name or Company..." required>
-                <input type="email" id="userEmail" name="email" placeholder="Your Email Address..." required>
-                <textarea id="userMessage" name="message" rows="2" placeholder="Tell us about your project..." required></textarea>
-                <button type="submit" id="sendBtn">Dispatch Inquiry to Executive Team</button>
+            <form id="contactForm" class="chat-input-area">
+                <input type="text" name="name" placeholder="Your Name or Company..." required>
+                <input type="email" name="email" placeholder="Your Email Address..." required>
+                <textarea name="message" rows="2" placeholder="Tell us about your project..." required></textarea>
+                <button type="submit">Dispatch Inquiry to Executive Team</button>
+                <p class="status-msg" id="formStatus"></p>
             </form>
         </div>
     </div>
 
     <script>
-        const form = document.getElementById('chatForm');
+        const form = document.getElementById('contactForm');
         const chatMessages = document.getElementById('chatMessages');
+        const formStatus = document.getElementById('formStatus');
 
-        form.addEventListener('submit', function(e) {
-            const name = document.getElementById('userName').value;
-            const message = document.getElementById('userMessage').value;
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            formStatus.textContent = "Transmitting securely...";
+            
+            const formData = new FormData(event.target);
+            formData.append("access_key", "C1621265-a772-4837-8bed-4aadd65d667e");
 
-            if(name && message) {
-                // Append user message to chat UI visually
-                const userMsgDiv = document.createElement('div');
-                userMsgDiv.className = 'message user';
-                userMsgDiv.textContent = `${name}: ${message}`;
-                chatMessages.appendChild(userMsgDiv);
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
 
-                // Ana response
-                setTimeout(() => {
+                const data = await response.json();
+                
+                if (data.success) {
+                    formStatus.textContent = "Success! Inquiry dispatched to inbox.";
+                    
+                    const userMsgDiv = document.createElement('div');
+                    userMsgDiv.className = 'message user';
+                    userMsgDiv.textContent = `${formData.get('name')}: ${formData.get('message')}`;
+                    chatMessages.appendChild(userMsgDiv);
+
                     const anaMsgDiv = document.createElement('div');
                     anaMsgDiv.className = 'message ana';
-                    anaMsgDiv.textContent = `Thank you, ${name}! Your inquiry has been securely dispatched to Rolando H. Ramirez Jr. LLC. We will be in touch shortly.`;
+                    anaMsgDiv.textContent = `Thank you! Your message has been routed to Ramirez Products Systems.`;
                     chatMessages.appendChild(anaMsgDiv);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 800);
+
+                    form.reset();
+                } else {
+                    formStatus.textContent = "Error transmitting. Please try again.";
+                }
+            } catch (error) {
+                formStatus.textContent = "Network error. Check connection.";
             }
         });
     </script>
