@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # ==============================================================================
-# ROLANDO H. RAMIREZ JR. LLC — CORE CONFIGURATION ENGINE v48.0
-# Boss & Owner: Rolando H. Ramirez Jr. (Ramirezrolando222222@gmail.com)
-# Company Operations: ramirezrolando242526@gmail.com
+# ROLANDO H. RAMIREZ JR. LLC — CORE CONFIGURATION ENGINE v49.0
+# Boss & Owner: Rolando H. Ramirez Jr.
+# Dual Reporting Matrix: Ramirezrolando222222@gmail.com & ramirezrolando242526@gmail.com
 # Headquarters: Houston, Texas, USA
 # ==============================================================================
 
@@ -22,23 +22,23 @@ CONFIG_VAULT = CONFIG_DIR / "enterprise_core_config.json.gz"
 
 def banner():
     print("\033[1;36m========================================================================\033[0m")
-    print("\033[1;32m      ROLANDO H. RAMIREZ JR. LLC — CORE CONFIGURATION ENGINE v48.0      \033[0m")
-    print("\033[1;35m      Permanent Email Integration & Master Routing Matrix              \033[0m")
+    print("\033[1;32m      ROLANDO H. RAMIREZ JR. LLC — CORE CONFIGURATION ENGINE v49.0      \033[0m")
+    print("\033[1;35m      Dual-Reporting & Operational Email Matrix Integrated             \033[0m")
     print("\033[1;36m========================================================================\033[0m")
 
 def phase_1_write_core_config():
-    print("\n\033[1;33m[PHASE 1/4] Writing Permanent Enterprise Configuration...\033[0m")
+    print("\n\033[1;33m[PHASE 1/4] Writing Dual-Reporting Enterprise Configuration...\033[0m")
     config_data = {
         "entity_name": "Rolando H. Ramirez Jr. LLC",
         "headquarters": "Houston, Texas, USA",
         "executive_authority": {
             "title": "Boss & Supreme Owner",
             "name": "Rolando H. Ramirez Jr.",
-            "primary_email": "Ramirezrolando222222@gmail.com"
+            "primary_reporting_email": "Ramirezrolando222222@gmail.com"
         },
         "company_operations": {
-            "dispatch_email": "ramirezrolando242526@gmail.com",
-            "purpose": "Automated telemetry, swarm logs, and operational dispatch"
+            "secondary_reporting_email": "ramirezrolando242526@gmail.com",
+            "purpose": "Operational dispatch, telemetry logging, and system reporting"
         },
         "governance_matrix": {
             "scripture_foundation": ["Proverbs 16:3", "Psalm 18:2"],
@@ -48,8 +48,6 @@ def phase_1_write_core_config():
     }
     
     raw_json = json.dumps(config_data, separators=(',', ':'))
-    raw_size = len(raw_json.encode('utf-8'))
-
     with gzip.open(CONFIG_VAULT, "wb") as gz:
         gz.write(raw_json.encode('utf-8'))
 
@@ -59,16 +57,16 @@ def phase_1_write_core_config():
     return config_data
 
 def phase_2_display_integration_matrix(config):
-    print("\n\033[1;32m[PHASE 2/4] Validating Integrated Email Routing Matrix...\033[0m")
+    print("\n\033[1;32m[PHASE 2/4] Validating Dual-Reporting Email Matrix...\033[0m")
     print(f"""
     +--------------------------------------------------------------+
-    |                 ENTERPRISE EMAIL INTEGRATION                 |
+    |                 DUAL-REPORTING EMAIL ROUTING                 |
     +--------------------------------------------------------------+
-    | [👑] Boss / Executive Email : {config['executive_authority']['primary_email']}  |
-    | [📤] Company Ops Dispatch   : {config['company_operations']['dispatch_email']} |
-    | [🏢] Legal Entity           : {config['entity_name']}           |
-    | [📍] Headquarters           : {config['headquarters']}          |
-    | [🛡️] Security Status        : {config['governance_matrix']['security_clearance']}               |
+    | [👑] Primary Executive Report : {config['executive_authority']['primary_reporting_email']} |
+    | [📤] Operational Dispatch     : {config['company_operations']['secondary_reporting_email']} |
+    | [🏢] Legal Entity             : {config['entity_name']}           |
+    | [📍] Headquarters             : {config['headquarters']}          |
+    | [🛡️] Security Status          : {config['governance_matrix']['security_clearance']}               |
     +--------------------------------------------------------------+
     """)
 
@@ -82,7 +80,7 @@ def phase_4_git_synchronization():
     print("\n\033[1;36m[PHASE 4/4] Committing Core Config to GitHub Repository...\033[0m")
     os.chdir(NEXUS_DIR)
     subprocess.run(["git", "add", "."])
-    subprocess.run(["git", "commit", "-m", "Enterprise update: Permanent Core Config and integrated email routing v48.0"])
+    subprocess.run(["git", "commit", "-m", "Enterprise update: Dual-reporting email matrix integrated v49.0"])
     subprocess.run(["git", "push", "origin", "master"])
     print("[✓] GitHub Sync Successful: Core Config pushed to origin master.")
 
@@ -95,7 +93,7 @@ def run_core_config():
 
     print("\n" + "=" * 72)
     print(f"[🙏] 'Commit to the Lord whatever you do, and He will establish your plans.' (Proverbs 16:3)")
-    print(f"[🚀] ENTERPRISE EMAIL MATRIX PERMANENTLY INTEGRATED & SYNCED, CHIEF!\n")
+    print(f"[🚀] DUAL-REPORTING EMAIL MATRIX PERMANENTLY LOCKED IN, CHIEF!\n")
 
 if __name__ == "__main__":
     run_core_config()
