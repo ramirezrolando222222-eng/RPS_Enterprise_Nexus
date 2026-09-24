@@ -5,34 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rolando H. Ramirez Jr. LLC | Enterprise Solutions & Automation</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0b0f19; color: #f3f4f6; margin: 0; padding: 40px 20px; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; background: #111827; padding: 40px; border-radius: 12px; border: 1px solid #374151; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        h1 { color: #10b981; font-size: 2.2rem; margin-bottom: 10px; }
-        .tagline { color: #9ca3af; font-size: 1.1rem; margin-bottom: 30px; }
-        h2 { color: #60a5fa; border-bottom: 1px solid #374151; padding-bottom: 8px; margin-top: 30px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 12px; }
-        .footer { margin-top: 40px; text-align: center; font-size: 0.9rem; color: #6b7280; border-top: 1px solid #1f2937; padding-top: 20px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0b0f19; color: #f3f4f6; margin: 0; padding: 20px; line-height: 1.6; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .wrapper { display: flex; flex-direction: row; max-width: 1000px; width: 100%; gap: 30px; flex-wrap: wrap; }
+        .container { flex: 1; min-width: 300px; background: #111827; padding: 30px; border-radius: 12px; border: 1px solid #374151; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .chat-box { flex: 1; min-width: 300px; background: #111827; padding: 25px; border-radius: 12px; border: 1px solid #10b981; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        h1 { color: #10b981; font-size: 1.8rem; margin-bottom: 5px; }
+        .tagline { color: #9ca3af; font-size: 0.95rem; margin-bottom: 20px; }
+        h2 { color: #60a5fa; border-bottom: 1px solid #374151; padding-bottom: 6px; margin-top: 20px; font-size: 1.2rem; }
+        ul { padding-left: 18px; font-size: 0.95rem; }
+        li { margin-bottom: 10px; }
+        
+        /* Chat UI Styles */
+        .chat-header { font-weight: bold; color: #10b981; margin-bottom: 15px; border-bottom: 1px solid #374151; padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .chat-messages { flex-grow: 1; height: 220px; overflow-y: auto; background: #030712; padding: 12px; border-radius: 8px; border: 1px solid #1f2937; margin-bottom: 15px; font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px; }
+        .message { padding: 8px 12px; border-radius: 6px; max-width: 85%; }
+        .message.ana { background: #1f2937; color: #e5e7eb; align-self: flex-start; }
+        .message.user { background: #10b981; color: #030712; align-self: flex-end; font-weight: 500; }
+        .chat-input-area { display: flex; flex-direction: column; gap: 8px; }
+        input, textarea { background: #030712; border: 1px solid #374151; color: #f3f4f6; padding: 10px; border-radius: 6px; font-size: 0.9rem; width: 100%; box-sizing: border-box; }
+        button { background: #10b981; color: #030712; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: #059669; }
+        .footer { margin-top: 25px; text-align: center; font-size: 0.8rem; color: #6b7280; border-top: 1px solid #1f2937; padding-top: 15px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Rolando H. Ramirez Jr. LLC</h1>
-        <div class="tagline">Houston, Texas • Sovereign Infrastructure, Automation & Security Engineering</div>
-        
-        <h2>Our Core Capabilities</h2>
-        <ul>
-            <li><strong>Workflow & Data Automation:</strong> Eliminating manual bottlenecks with custom, lightweight automation pipelines for modern businesses.</li>
-            <li><strong>Digital Security Audits:</strong> Hardening local systems, infrastructure, and workflows against unauthorized data exposure.</li>
-            <li><strong>Rapid Technical Contracting:</strong> High-speed backend scripting, data processing, and custom software integration.</li>
-        </ul>
+    <div class="wrapper">
+        <!-- Company Info Section -->
+        <div class="container">
+            <h1>Rolando H. Ramirez Jr. LLC</h1>
+            <div class="tagline">Houston, Texas • Sovereign Infrastructure & Automation</div>
+            
+            <h2>Our Core Capabilities</h2>
+            <ul>
+                <li><strong>Workflow Automation:</strong> Eliminating manual bottlenecks with custom automation scripts.</li>
+                <li><strong>Digital Security Audits:</strong> Hardening local systems against data exposure and leaks.</li>
+                <li><strong>Rapid Tech Contracting:</strong> Secure backend scripting and custom API integrations.</li>
+            </ul>
 
-        <h2>Commitment to Excellence</h2>
-        <p><em>"Commit to the Lord whatever you do, and He will establish your plans."</em> — Proverbs 16:3</p>
+            <h2>Our Commitment</h2>
+            <p style="font-size: 0.9rem; font-style: italic; color: #9ca3af;">"Commit to the Lord whatever you do, and He will establish your plans." — Proverbs 16:3</p>
+        </div>
 
-        <div class="footer">
-            &copy; 2026 Rolando H. Ramirez Jr. LLC. All Rights Reserved. Sovereign & Local-First Architecture.
+        <!-- Ana Customer Relations Chatbot Box -->
+        <div class="chat-box">
+            <div class="chat-header">
+                <span>🤖 Ana | AI Customer Relations</span>
+                <span style="font-size: 0.75rem; background: #065f46; color: #6ee7b7; padding: 2px 6px; border-radius: 4px;">Online 24/7</span>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ana">Hello! I'm Ana, Chief of Staff for Rolando H. Ramirez Jr. LLC. What project or automation can we build for you today? (Type your message below)</div>
+            </div>
+
+            <!-- Form connected to secure email dispatch -->
+            <form id="chatForm" class="chat-input-area" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Replace with your submission token or keep default secure routing -->
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="subject" value="[ANA LEAD] New Inquiry from Sovereign Website">
+                
+                <input type="text" id="userName" name="name" placeholder="Your Name or Company..." required>
+                <input type="email" id="userEmail" name="email" placeholder="Your Email Address..." required>
+                <textarea id="userMessage" name="message" rows="2" placeholder="Tell us about your project..." required></textarea>
+                <button type="submit" id="sendBtn">Dispatch Inquiry to Executive Team</button>
+            </form>
         </div>
     </div>
+
+    <script>
+        const form = document.getElementById('chatForm');
+        const chatMessages = document.getElementById('chatMessages');
+
+        form.addEventListener('submit', function(e) {
+            const name = document.getElementById('userName').value;
+            const message = document.getElementById('userMessage').value;
+
+            if(name && message) {
+                // Append user message to chat UI visually
+                const userMsgDiv = document.createElement('div');
+                userMsgDiv.className = 'message user';
+                userMsgDiv.textContent = `${name}: ${message}`;
+                chatMessages.appendChild(userMsgDiv);
+
+                // Ana response
+                setTimeout(() => {
+                    const anaMsgDiv = document.createElement('div');
+                    anaMsgDiv.className = 'message ana';
+                    anaMsgDiv.textContent = `Thank you, ${name}! Your inquiry has been securely dispatched to Rolando H. Ramirez Jr. LLC. We will be in touch shortly.`;
+                    chatMessages.appendChild(anaMsgDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 800);
+            }
+        });
+    </script>
 </body>
 </html>
